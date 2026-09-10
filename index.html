@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SAP ERP 데일리 리포트</title>
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable-dynamic-subset.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f7f5f0;
+    --paper: #ffffff;
+    --ink: #1a1a1a;
+    --ink-soft: #4a4a4a;
+    --line: #ddd7c9;
+    --accent-erp: #0f4c81;      /* ERP 코어/클라우드 */
+    --accent-security: #a13d3d; /* 보안 */
+    --accent-biz: #6b5b2a;      /* 비즈니스/고객사례 */
+    --accent-ai: #3d6b52;       /* AI/Joule */
+    --mono: 'IBM Plex Mono', monospace;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Pretendard Variable', Pretendard, -apple-system, sans-serif;
+    line-height: 1.6;
+  }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 32px 20px 80px; }
+
+  header.masthead {
+    text-align: center;
+    border-bottom: 4px double var(--ink);
+    padding-bottom: 18px;
+    margin-bottom: 8px;
+  }
+  header.masthead .kicker {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 3px;
+    color: var(--ink-soft);
+    text-transform: uppercase;
+  }
+  header.masthead h1 {
+    font-family: 'Nanum Myeongjo', serif;
+    font-weight: 800;
+    font-size: 42px;
+    margin: 6px 0 4px;
+    letter-spacing: -1px;
+  }
+  header.masthead .sub {
+    font-size: 14px;
+    color: var(--ink-soft);
+  }
+  .meta-bar {
+    display: flex;
+    justify-content: space-between;
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--ink-soft);
+    padding: 10px 2px 20px;
+    border-bottom: 1px solid var(--line);
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .lede {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-left: 5px solid var(--ink);
+    padding: 18px 22px;
+    margin-bottom: 32px;
+    font-size: 15px;
+    color: var(--ink-soft);
+  }
+  .lede strong { color: var(--ink); }
+
+  section.category { margin-bottom: 36px; }
+  section.category .cat-head {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    margin-bottom: 14px;
+  }
+  section.category .cat-head .tag {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: #fff;
+    padding: 3px 9px;
+    border-radius: 2px;
+    letter-spacing: 1px;
+  }
+  section.category .cat-head h2 {
+    font-family: 'Nanum Myeongjo', serif;
+    font-size: 21px;
+    margin: 0;
+  }
+  section.category .cat-head .rule {
+    flex: 1;
+    height: 1px;
+    background: var(--line);
+  }
+
+  .cat-erp .tag { background: var(--accent-erp); }
+  .cat-security .tag { background: var(--accent-security); }
+  .cat-biz .tag { background: var(--accent-biz); }
+  .cat-ai .tag { background: var(--accent-ai); }
+
+  article.story {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    padding: 16px 20px;
+    margin-bottom: 12px;
+  }
+  article.story .story-date {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--ink-soft);
+    margin-bottom: 4px;
+  }
+  article.story h3 {
+    font-size: 16px;
+    margin: 0 0 8px;
+    line-height: 1.4;
+  }
+  article.story p {
+    font-size: 14px;
+    color: var(--ink-soft);
+    margin: 0 0 8px;
+  }
+  article.story .source-link {
+    font-family: var(--mono);
+    font-size: 11.5px;
+  }
+  article.story .source-link a {
+    color: var(--accent-erp);
+    text-decoration: none;
+    border-bottom: 1px dotted var(--accent-erp);
+  }
+  article.story .source-link a:hover { border-bottom-style: solid; }
+
+  footer {
+    margin-top: 40px;
+    padding-top: 16px;
+    border-top: 4px double var(--ink);
+    text-align: center;
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--ink-soft);
+  }
+
+  @media (max-width: 560px) {
+    header.masthead h1 { font-size: 30px; }
+    .meta-bar { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="masthead">
+    <div class="kicker">Daily Enterprise Software Brief</div>
+    <h1>SAP ERP 데일리 리포트</h1>
+    <div class="sub">SAP ERP · S/4HANA · Cloud ERP 관련 글로벌 뉴스를 매일 정리합니다</div>
+  </header>
+
+  <div class="meta-bar">
+    <span id="report-date">2026년 9월 10일 (목)</span>
+    <span>발행: 바이브리치 · 아이티리치</span>
+  </div>
+
+  <div class="lede">
+    <strong>오늘의 요약.</strong> 9월 SAP 보안 패치데이(9/8)에서 신규 보안 노트 19건이 공개됐고,
+    록히드마틴이 SAP SuccessFactors 기반 인력 전환을 발표했습니다. HARTING은 RISE with SAP 클라우드 전환 계약을
+    체결했으며, EU 집행위원회는 SAP의 온프레미스 유지보수 정책에 대한 반독점 조사를 종결했습니다.
+    ECC 2027년 지원 종료를 앞두고 S/4HANA 전환 논의도 계속 이어지고 있습니다.
+  </div>
+
+  <!-- ERP 코어 / 클라우드 전환 -->
+  <section class="category cat-erp">
+    <div class="cat-head">
+      <span class="tag">ERP CORE</span>
+      <h2>ERP 코어 · 클라우드 전환</h2>
+      <span class="rule"></span>
+    </div>
+
+    <article class="story">
+      <div class="story-date">2026.09.02</div>
+      <h3>HARTING, RISE with SAP로 클라우드 전환 가속</h3>
+      <p>독일 산업용 커넥티비티 기업 HARTING이 SAP Cloud ERP Private로 이전하는 RISE with SAP 장기 계약을
+      체결했다. ERP, 비즈니스 프로세스 인텔리전스, 서비스 역량을 하나의 구독형 클라우드 모델로 통합해
+      글로벌 IT 전략의 기반을 마련한다는 계획이다.</p>
+      <div class="source-link"><a href="https://news.sap.com/2026/09/harting-accelerates-cloud-transformation-with-rise-with-sap/" target="_blank">SAP News Center →</a></div>
+    </article>
+
+    <article class="story">
+      <div class="story-date">2026.09.08</div>
+      <h3>록히드마틴, SAP SuccessFactors 기반 워크포스 전환 추진</h3>
+      <p>방산기업 록히드마틴이 SAP SuccessFactors 솔루션을 도입해 인력관리 체계를 전환한다고 발표했다.
+      대규모 조직의 HR 프로세스 현대화 사례로 주목받고 있다.</p>
+      <div class="source-link"><a href="https://news.sap.com/press-room/" target="_blank">SAP Press Room →</a></div>
+    </article>
+
+    <article class="story">
+      <div class="story-date">2026.07.23</div>
+      <h3>SAP 2026년 2분기·상반기 실적 발표 — 클라우드 ERP 스위트 25% 성장</h3>
+      <p>클라우드 매출이 전년 대비 22% 증가했고, 상수 환율 기준 클라우드 ERP 스위트 매출은 25%~27% 성장했다.
+      클라우드 백로그는 229억 유로로 27% 증가. Dremio·Prior Labs 인수에 따른 희석 효과를 반영해
+      2026년 비IFRS 영업이익 전망도 조정됐다.</p>
+      <div class="source-link"><a href="https://www.sap.com/investors/en.html" target="_blank">SAP Investor Relations →</a></div>
+    </article>
+
+    <article class="story">
+      <div class="story-date">진행 중 이슈</div>
+      <h3>ECC 2027년 지원 종료, S/4HANA 전환 전략 셋 중 선택 갈림길</h3>
+      <p>SAP ECC 지원이 2027년 종료를 앞둔 가운데, 기업들은 ①기술적 컨버전 ②신규 그린필드 구축
+      ③선택적 데이터 전환 중 하나를 택해 S/4HANA로 이전 중이다. 서드파티 지원업체를 통한 연장 옵션도
+      있지만 최신 패치를 받을 수 없다는 제약이 있다.</p>
+      <div class="source-link"><a href="https://www.computerweekly.com/news/366636765/S4Hana-in-2026-Three-ways-to-move-off-SAP-ECC" target="_blank">Computer Weekly →</a></div>
+    </article>
+  </section>
+
+  <!-- 보안 -->
+  <section class="category cat-security">
+    <div class="cat-head">
+      <span class="tag">SECURITY</span>
+      <h2>보안 패치 · 취약점</h2>
+      <span class="rule"></span>
+    </div>
+
+    <article class="story">
+      <div class="story-date">2026.09.08</div>
+      <h3>9월 보안 패치데이 — 신규 보안 노트 19건 공개</h3>
+      <p>SAP가 9월 8일 정기 보안 패치데이에서 신규 보안 노트 19건과 기존 노트 업데이트 1건을 발표했다.
+      S/4HANA·NetWeaver 등 핵심 모듈 운영 기업은 최신 패치 적용 여부를 우선 점검할 필요가 있다.</p>
+      <div class="source-link"><a href="https://support.sap.com/en/my-support/knowledge-base/security-notes-news/september-2026.html" target="_blank">SAP Security Patch Day Bulletin →</a></div>
+    </article>
+
+    <article class="story">
+      <div class="story-date">2026.07.14</div>
+      <h3>7월 패치데이 — NetWeaver ABAP 심각도 '치명적' 취약점 포함 20건 패치</h3>
+      <p>NetWeaver Application Server ABAP과 SAP Kernel에서 발견된 치명적 메모리 손상 취약점을 포함해
+      20건의 보안 패치가 발표됐다.</p>
+      <div class="source-link"><a href="https://www.cio.com/article/3487010/sap-latest-news-and-insights.html" target="_blank">CIO.com →</a></div>
+    </article>
+
+    <article class="story">
+      <div class="story-date">참고 (2026.05)</div>
+      <h3>S/4HANA·Commerce 치명적 코드 인젝션 취약점(CVSS 9.6) 패치</h3>
+      <p>입력값 검증 미흡으로 인한 SQL 인젝션 취약점(CVE-2026-34260 등)이 5월 패치데이에서 수정됐다.
+      악용 시 데이터 유출 및 임의 코드 실행이 가능한 것으로 평가되어 신속한 패치 적용이 권고된 바 있다.</p>
+      <div class="source-link"><a href="https://www.securityweek.com/sap-patches-critical-s-4hana-commerce-vulnerabilities/" target="_blank">SecurityWeek →</a></div>
+    </article>
+  </section>
+
+  <!-- 규제/거버넌스 -->
+  <section class="category cat-biz">
+    <div class="cat-head">
+      <span class="tag">REGULATION</span>
+      <h2>규제 · 라이선스 · 거버넌스</h2>
+      <span class="rule"></span>
+    </div>
+
+    <article class="story">
+      <div class="story-date">2026.07.09</div>
+      <h3>EU 집행위, 온프레미스 유지보수 정책 조사 종결 발표</h3>
+      <p>유럽연합 집행위원회가 SAP의 온프레미스 유지보수·지원 정책에 대해 진행하던 조사를 종결했다고
+      SAP가 발표했다. 지난해 9월 시작된 공식 절차가 약 10개월 만에 마무리됐다.</p>
+      <div class="source-link"><a href="https://www.sap.com/investors/en.html" target="_blank">SAP Investor Relations →</a></div>
+    </article>
+
+    <article class="story">
+      <div class="story-date">2026.05.04</div>
+      <h3>SAP의 신규 API 정책, 고객 반발 직면</h3>
+      <p>"SAP 공인 아키텍처·데이터 서비스·서비스별 경로"로 API 사용을 제한하는 신규 정책의 범위와 영향에
+      대해 사용자들의 반발이 이어지고 있다.</p>
+      <div class="source-link"><a href="https://www.cio.com/article/3487010/sap-latest-news-and-insights.html" target="_blank">CIO.com →</a></div>
+    </article>
+  </section>
+
+  <!-- AI / Joule -->
+  <section class="category cat-ai">
+    <div class="cat-head">
+      <span class="tag">AI · JOULE</span>
+      <h2>비즈니스 AI · 에이전트</h2>
+      <span class="rule"></span>
+    </div>
+
+    <article class="story">
+      <div class="story-date">Sapphire 2026</div>
+      <h3>SAP, '자율형 엔터프라이즈' 비전 제시 — Joule Studio로 서드파티 에이전트까지 관리</h3>
+      <p>SAP Business AI Platform이 재무·HR·구매·공급망 전반의 Joule 에이전트를 구동하는 구조를 공개했다.
+      Palantir·Anthropic과 파트너십을 발표했고, AWS·Nvidia와의 협력도 확대했다. Joule Studio는 SAP는 물론
+      서드파티 에이전트까지 함께 관리할 수 있다.</p>
+      <div class="source-link"><a href="https://www.constellationr.com/insights/news/sap-sapphire-2026-sap-makes-its-case-it-should-your-autonomous-enterprise-platform" target="_blank">Constellation Research →</a></div>
+    </article>
+
+    <article class="story">
+      <div class="story-date">2026.07.15</div>
+      <h3>기업 AI 도입 효과는 긍정적이나 거버넌스는 뒤처져 — SAP 후원 연구</h3>
+      <p>SAP가 후원한 연구에 따르면 기업들은 AI 도입으로 긍정적인 성과를 체감하고 있지만, 거버넌스
+      체계는 이러한 속도를 따라가지 못하고 있는 것으로 나타났다.</p>
+      <div class="source-link"><a href="https://www.cio.com/article/3487010/sap-latest-news-and-insights.html" target="_blank">CIO.com →</a></div>
+    </article>
+  </section>
+
+  <footer>
+    본 리포트는 공개된 뉴스를 기반으로 자동 요약되었습니다 · Generated for 바이브리치<br>
+    다음 업데이트: 익일 09:00 KST
+  </footer>
+
+</div>
+
+<script>
+  // 리포트 생성 시각 표시 (KST 기준)
+  const now = new Date();
+  const kstOffset = 9 * 60;
+  const utc = now.getTime() + (now.getTimezoneOffset() * 60000);
+  const kst = new Date(utc + (kstOffset * 60000));
+  const days = ['일','월','화','수','목','금','토'];
+  const dateStr = `${kst.getFullYear()}년 ${kst.getMonth()+1}월 ${kst.getDate()}일 (${days[kst.getDay()]})`;
+  const el = document.getElementById('report-date');
+  if (el) el.textContent = dateStr;
+</script>
+
+</body>
+</html>
