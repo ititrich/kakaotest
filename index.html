@@ -1,1 +1,466 @@
-&lt;!DOCTYPE html&gt;
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SAP ERP 데일리 리포트</title>
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable-dynamic-subset.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f7f5f0;
+    --paper: #ffffff;
+    --ink: #1a1a1a;
+    --ink-soft: #4a4a4a;
+    --line: #ddd7c9;
+    --accent-erp: #0f4c81;      /* ERP 코어/클라우드 */
+    --accent-security: #a13d3d; /* 보안 */
+    --accent-biz: #6b5b2a;      /* 비즈니스/고객사례 */
+    --accent-ai: #3d6b52;       /* AI/Joule */
+    --mono: 'IBM Plex Mono', monospace;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Pretendard Variable', Pretendard, -apple-system, sans-serif;
+    line-height: 1.6;
+  }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 32px 20px 80px; }
+
+  header.masthead {
+    text-align: center;
+    border-bottom: 4px double var(--ink);
+    padding-bottom: 18px;
+    margin-bottom: 8px;
+  }
+  header.masthead .kicker {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 3px;
+    color: var(--ink-soft);
+    text-transform: uppercase;
+  }
+  header.masthead h1 {
+    font-family: 'Nanum Myeongjo', serif;
+    font-weight: 800;
+    font-size: 42px;
+    margin: 6px 0 4px;
+    letter-spacing: -1px;
+  }
+  header.masthead .sub {
+    font-size: 14px;
+    color: var(--ink-soft);
+  }
+  .meta-bar {
+    display: flex;
+    justify-content: space-between;
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--ink-soft);
+    padding: 10px 2px 20px;
+    border-bottom: 1px solid var(--line);
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .lede {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-left: 5px solid var(--ink);
+    padding: 18px 22px;
+    margin-bottom: 32px;
+    font-size: 15px;
+    color: var(--ink-soft);
+  }
+  .lede strong { color: var(--ink); }
+
+  section.category { margin-bottom: 36px; }
+  section.category .cat-head {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    margin-bottom: 14px;
+  }
+  section.category .cat-head .tag {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: #fff;
+    padding: 3px 9px;
+    border-radius: 2px;
+    letter-spacing: 1px;
+  }
+  section.category .cat-head h2 {
+    font-family: 'Nanum Myeongjo', serif;
+    font-size: 21px;
+    margin: 0;
+  }
+  section.category .cat-head .rule {
+    flex: 1;
+    height: 1px;
+    background: var(--line);
+  }
+
+  .cat-erp .tag { background: var(--accent-erp); }
+  .cat-security .tag { background: var(--accent-security); }
+  .cat-biz .tag { background: var(--accent-biz); }
+  .cat-ai .tag { background: var(--accent-ai); }
+
+  article.story {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    padding: 16px 20px;
+    margin-bottom: 12px;
+  }
+  article.story .story-date {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--ink-soft);
+    margin-bottom: 4px;
+  }
+  article.story h3 {
+    font-size: 16px;
+    margin: 0 0 8px;
+    line-height: 1.4;
+  }
+  article.story p {
+    font-size: 14px;
+    color: var(--ink-soft);
+    margin: 0 0 8px;
+  }
+  article.story .source-link {
+    font-family: var(--mono);
+    font-size: 11.5px;
+  }
+  article.story .source-link a {
+    color: var(--accent-erp);
+    text-decoration: none;
+    border-bottom: 1px dotted var(--accent-erp);
+  }
+  article.story .source-link a:hover { border-bottom-style: solid; }
+
+  footer {
+    margin-top: 40px;
+    padding-top: 16px;
+    border-top: 4px double var(--ink);
+    text-align: center;
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--ink-soft);
+  }
+
+  @media (max-width: 560px) {
+    header.masthead h1 { font-size: 30px; }
+    .meta-bar { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="masthead">
+    <div class="kicker">Daily Enterprise Software Brief</div>
+    <h1>SAP ERP 데일리 리포트</h1>
+    <div class="sub">SAP ERP · S/4HANA · Cloud ERP 관련 글로벌 뉴스를 매일 정리합니다</div>
+  </header>
+
+  <div class="meta-bar">
+    <span id="report-date">2026년 9월 25일 (금)</span>
+    <span>발행: 바이브리치 · 아이티리치</span>
+  </div>
+
+  <div class="lede">
+    <strong>오늘의 요약.</strong> ERP 클라우드 전환·보안·규제 카테고리에서는 최근 24~72시간 내
+    새로운 특보성 뉴스가 확인되지 않아 지난 리포트의 핵심 이슈가 그대로 이어진다. 독일
+    하팅(HARTING)의 SAP Cloud ERP Private 전환, 콜롬비나의 16개국 동시 S/4HANA Cloud
+    Private Edition 이행, 윌슨 스포팅 굿즈의 2027년 S/4HANA 전환 준비가 계속 주목받고
+    있으며, 9월 8일 패치데이에서 공개된 CVSS 10.0 등급 SAP 커널 취약점
+    'OVERPASS'(CVE-2026-44756)는 실제 악용 사례 없이 미패치 시스템 점검이 업계 최우선
+    과제로 남아 있다. 규제 측면에서는 EU 집행위의 10년 구속력 있는 온프레미스 유지보수
+    시정조치가 여전히 핵심 화두다. 비즈니스 AI 영역에서는 새 소식이 이어졌다. SAP가 IDC
+    MarketScape 'AI 기반 직접 지출(Direct Spend)' 2026 부문 리더로 선정됐으며, 아르헨티나
+    에너지 기업 플러스페트롤(Pluspetrol)이 시추 자재 가용성을 예측하는 AI 에이전트로 SAP
+    Innovation Tournament Americas 2026 아르헨티나 대회에서 우승했다. 이는 SAP Ariba
+    Spend Analysis and Insights 정식 출시, Joule 조달 에이전트 2차 웨이브 GA에 이어
+    조달·지출 영역에서 SAP의 AI 경쟁력이 계속 강화되고 있음을 보여준다.
+  </div>
+
+  <!-- ERP 코어 / 클라우드 전환 -->
+  <section class="category cat-erp">
+    <div class="cat-head">
+      <span class="tag">ERP CORE</span>
+      <h2>ERP 코어 · 클라우드 전환</h2>
+      <span class="rule"></span>
+    </div>
+
+    <article class="story">
+      <div class="story-date">2026.09</div>
+      <h3>윌슨(Wilson), 100여개국 공급망을 SAP로 운영 — 2027년 S/4HANA 전환에 Joule 활용</h3>
+      <p>스포츠용품 기업 윌슨 스포팅 굿즈가 SAP ECC, SAP Analytics Cloud, SAP Datasphere, SAP
+      Business Data Cloud, SAP Business Technology Platform과 Ariba·Concur·LeanIX 등으로 구성된
+      SAP 환경으로 100개국 이상에 걸친 제조·물류·유통을 연결하고 있다. 회사는 2027년부터
+      본격화할 S/4HANA 전환을 준비 중이며, 확장창고관리(EWM)·운송·품질·옴니채널 역량 확보를
+      목표로 한다. 전환 과정에서 코드 변환에 Joule을 활용하는 것을 AI 역량 도입의 첫걸음으로
+      삼고 있다.</p>
+      <div class="source-link"><a href="https://news.sap.com/2026/09/cloud-to-court-wilson-runs-smarter-faster-sap/" target="_blank">SAP News Center →</a></div>
+    </article>
+
+    <article class="story">
+      <div class="story-date">2026.09.17</div>
+      <h3>Flintfox by Enable, RISE with SAP 기반 SAP Clean Core 인증 획득</h3>
+      <p>가격관리 소프트웨어 기업 Enable의 Flintfox by Enable이 SAP S/4HANA Cloud 연동에 대해 SAP
+      Clean Core 인증을 획득했다고 발표했다. 이 인증은 SAP 코어 코드를 수정하지 않고 업그레이드에
+      안전한 아키텍처를 유지하며 RISE with SAP와 호환된다는 점을 검증한다. 제조·유통·소비재 기업들이
+      레거시 ERP에서 SAP S/4HANA Cloud로, 많은 경우 RISE with SAP를 통해 전환을 가속화하면서 Clean
+      Core 준수가 조달 과정에서 점점 더 일반적인 요건으로 자리잡고 있다.</p>
+      <div class="source-link"><a href="https://www.globenewswire.com/news-release/2026/09/17/3364291/0/en/flintfox-by-enable-achieves-sap-certified-for-clean-core-with-rise-with-sap.html" target="_blank">GlobeNewswire →</a></div>
+    </article>
+
+    <article class="story">
+      <div class="story-date">2026.09.19</div>
+      <h3>콜롬비나, 16개국 동시 전환으로 SAP S/4HANA Cloud Private Edition 이행 완료</h3>
+      <p>중남미 식품기업 콜롬비나(Colombina)가 SAP ERP Central Component(ECC)에서 SAP
+      S/4HANA Cloud Private Edition으로 16개국 동시 전환을 완료했다고 SAP가 발표했다.
+      재무·자산관리·제조·공급망·영업 등 핵심 업무를 아우르며 SAP Fiori, SAP
+      SuccessFactors, SAP Integrated Business Planning, SAP Analytics Cloud, SAP Ariba 등
+      SAP 생태계 전반과 통합했다. 전환 이후 고객 응답 시간이 3분의 1 이상 개선되고 익일
+      배송이 가능해졌으며, 애플리케이션 서버를 두 배로 늘려 다운타임을 줄이고 대부분의
+      고객 이슈를 45분 내 해결하고 있다. 회사는 향후 Joule 에이전트 활성화를 준비하는
+      동시에 SAP Databricks·SAP Business Data Cloud로 AI를 위한 데이터 기반을 다지고
+      있다.</p>
+      <div class="source-link"><a href="https://news.sap.com/2026/09/colombina-sap-faster-delivery-stronger-security-ai-readiness/" target="_blank">SAP News Center →</a></div>
+    </article>
+
+    <article class="story">
+      <div class="story-date">2026.09.16</div>
+      <h3>Syntax, SAP Cloud ERP 연동 광업 전용 유지보수 예산관리 솔루션 출시</h3>
+      <p>IT서비스 기업 Syntax가 SAP와의 공동 혁신(co-innovation) 협력을 통해 광업 기업을 위한
+      유지보수 비용 예산관리 솔루션 'Syntax Maintenance Cost Budgeting'을 출시했다고 발표했다.
+      SAP Cloud ERP와 연동돼 스프레드시트 기반 수기 작업을 자동화된 예측형 프로세스로
+      대체하며, 사업장·비용센터·자산 단위로 유지보수 지출에 대한 가시성을 높인다. 운영
+      여건 변화에 따라 예산을 재예측하는 기능, 계획·예측·실제 지출 간 차이를 실시간으로
+      파악하는 변동 분석, 과거 유지보수 지출 데이터를 활용한 예측 모델링 등을 갖춰 스프레드시트
+      중심의 수동 프로세스를 대체할 수 있다는 설명이다.</p>
+      <div class="source-link"><a href="https://www.prnewswire.com/news-releases/syntax-introduces-maintenance-cost-budgeting-for-mining-giving-operators-forward-looking-control-over-maintenance-spend-302879324.html" target="_blank">PR Newswire →</a></div>
+    </article>
+
+    <article class="story">
+      <div class="story-date">2026.09.02</div>
+      <h3>독일 하팅(HARTING), RISE with SAP로 글로벌 클라우드 전환 가속</h3>
+      <p>산업용 커넥터 전문기업 하팅 테크놀로지 그룹이 RISE with SAP 장기 계약을 체결하고 SAP
+      Cloud ERP Private로 전환한다고 SAP가 발표했다. ERP, 비즈니스 프로세스 인텔리전스,
+      서비스 역량을 단일 클라우드 구독으로 통합해 글로벌 운영을 표준화하고 신기술 도입을
+      가속화하며 전사적으로 AI 활용 기반을 마련하는 것이 목표다. 클라우드 전환을 통해 운영과
+      인프라 자동화·표준화를 지속하고 IT 자원을 혁신에 집중시키는 한편, 업데이트와 신규
+      기능을 지속적으로 활용할 수 있을 것으로 기대된다. SAP 컨설팅 파트너인 NTT DATA
+      Business Solutions AG가 전환 작업을 지원한다.</p>
+      <div class="source-link"><a href="https://news.sap.com/2026/09/harting-accelerates-cloud-transformation-with-rise-with-sap/" target="_blank">SAP News Center →</a></div>
+    </article>
+  </section>
+
+  <!-- 보안 -->
+  <section class="category cat-security">
+    <div class="cat-head">
+      <span class="tag">SECURITY</span>
+      <h2>보안 패치 · 취약점</h2>
+      <span class="rule"></span>
+    </div>
+
+    <article class="story">
+      <div class="story-date">2026.09.08</div>
+      <h3>9월 보안 패치데이 — CVSS 10.0 'OVERPASS' 커널 취약점 등 치명적 결함 다수 패치</h3>
+      <p>SAP가 9월 8일 정기 보안 패치데이에서 신규 보안 노트 19건과 기존 노트 업데이트 1건을
+      발표했다. 이 중 SAP 커널의 Extended Passport Processing(EPP)에서 발견된 메모리 손상
+      취약점 'OVERPASS'(CVE-2026-44756, CVSS 10.0)는 세션 인증 이전 단계에서 처리되는 EPP의
+      특성상 사용자 잠금·역할·권한객체 등 표준 보안 통제를 우회해 인증 없이 원격 코드 실행이
+      가능하며, 인터넷에 노출된 SAP 시스템 1만여 대가 영향권에 있는 것으로 파악됐다. 이 외에도
+      NetWeaver Message Server의 인증 누락 취약점 'S4GET'(CVE-2026-58240, CVSS 9.8),
+      SAP Cloud Application Programming Model 다중테넌시 라이브러리(@sap/cds-mtxs)의 자격증명
+      노출 취약점(CVE-2026-76969, CVSS 9.4), SAP GUI for Java의 접근통제 결함(CVE-2026-66768)
+      등 치명적 등급 취약점이 포함됐다. 현재까지 실제 악용 사례는 보고되지 않았으나, 핵심 SAP
+      인프라 구성요소에 영향을 미치는 만큼 즉시 패치 적용이 권고된다.</p>
+      <div class="source-link"><a href="https://onapsis.com/blog/sap-security-patch-day-september-2026/" target="_blank">Onapsis →</a></div>
+    </article>
+
+    <article class="story">
+      <div class="story-date">2026.07.14</div>
+      <h3>7월 패치데이 — NetWeaver ABAP 심각도 '치명적' 취약점 포함 20건 패치</h3>
+      <p>NetWeaver Application Server ABAP과 SAP Kernel에서 발견된 치명적 메모리 손상 취약점을 포함해
+      20건의 보안 패치가 발표됐다.</p>
+      <div class="source-link"><a href="https://www.cio.com/article/3487010/sap-latest-news-and-insights.html" target="_blank">CIO.com →</a></div>
+    </article>
+
+    <article class="story">
+      <div class="story-date">참고 (2026.05)</div>
+      <h3>S/4HANA·Commerce 치명적 코드 인젝션 취약점(CVSS 9.6) 패치</h3>
+      <p>입력값 검증 미흡으로 인한 SQL 인젝션 취약점(CVE-2026-34260 등)이 5월 패치데이에서 수정됐다.
+      악용 시 데이터 유출 및 임의 코드 실행이 가능한 것으로 평가되어 신속한 패치 적용이 권고된 바 있다.</p>
+      <div class="source-link"><a href="https://www.securityweek.com/sap-patches-critical-s-4hana-commerce-vulnerabilities/" target="_blank">SecurityWeek →</a></div>
+    </article>
+  </section>
+
+  <!-- 규제/거버넌스 -->
+  <section class="category cat-biz">
+    <div class="cat-head">
+      <span class="tag">REGULATION</span>
+      <h2>규제 · 라이선스 · 거버넌스</h2>
+      <span class="rule"></span>
+    </div>
+
+    <article class="story">
+      <div class="story-date">2026.07.30</div>
+      <h3>독일 연방카르텔청, 셀로니스 제기 SAP 데이터 접근 예비조사 종결 — "현재로선 남용 소지 없음"</h3>
+      <p>독일 연방카르텔청(Bundeskartellamt)이 프로세스 마이닝 업체 셀로니스(Celonis) 등의 문제
+      제기로 진행해 온 SAP의 데이터 접근·자사 우대 관련 예비조사를 종결하고, 현재로선 남용 절차를
+      개시하지 않기로 했다고 발표했다. 조사 결과 SAP 시스템에서의 데이터 추출이 기술적으로는
+      까다롭지만 여러 합법적인 방법이 여전히 존재하며, 지난 봄 공개된 SAP API 정책이 기존
+      데이터 추출 경로를 자동으로 무력화하지는 않는다고 판단했다. 다만 카르텔청은 향후 다시
+      문제 삼을 권리를 유보한다고 밝혔으며, 셀로니스는 이번 결정이 새 API 정책 하에서도 데이터
+      추출이 계속 가능하다는 전제에 근거했다며 이의를 제기했다.</p>
+      <div class="source-link"><a href="https://www.bundeskartellamt.de/SharedDocs/Meldung/EN/Pressemitteilungen/2026/07_30_2026_SAP_Celonis.html" target="_blank">Bundeskartellamt →</a></div>
+    </article>
+
+    <article class="story">
+      <div class="story-date">2026.07.09</div>
+      <h3>EU 집행위, 온프레미스 유지보수 정책 조사 종결 — 10년 구속력 있는 약속 확정</h3>
+      <p>유럽연합 집행위원회가 SAP의 온프레미스 유지보수·지원 정책에 대한 반독점 조사를 종결하고,
+      향후 10년간 전 세계 고객에게 적용되는 구속력 있는 시정 약속을 승인했다고 발표했다. 서드파티
+      유지보수 업체로의 전환을 쉽게 하고, 재가입 수수료를 없애며, 미사용 라이선스 지원을 중단할 수
+      있도록 하는 내용이 핵심이다. SAP가 약속을 이행하지 않을 경우 전 세계 연매출의 최대 10%에
+      달하는 과징금이 부과될 수 있다.</p>
+      <div class="source-link"><a href="https://www.cio.com/article/4195520/sap-concedes-to-eu-freeing-cios-from-expensive-support-shackles.html" target="_blank">CIO.com →</a></div>
+    </article>
+
+    <article class="story">
+      <div class="story-date">2026.05.04</div>
+      <h3>SAP의 신규 API 정책, 고객 반발 직면</h3>
+      <p>"SAP 공인 아키텍처·데이터 서비스·서비스별 경로"로 API 사용을 제한하는 신규 정책의 범위와 영향에
+      대해 사용자들의 반발이 이어지고 있다. 서드파티 시스템과 자율 AI 에이전트의 직접적인 데이터
+      추출을 제한해 SAP 자사의 BTP·Datasphere 생태계로 고객을 유도하려는 것이라는 지적도 나온다.</p>
+      <div class="source-link"><a href="https://www.cio.com/article/3487010/sap-latest-news-and-insights.html" target="_blank">CIO.com →</a></div>
+    </article>
+  </section>
+
+  <!-- AI / Joule -->
+  <section class="category cat-ai">
+    <div class="cat-head">
+      <span class="tag">AI · JOULE</span>
+      <h2>비즈니스 AI · 에이전트</h2>
+      <span class="rule"></span>
+    </div>
+
+    <article class="story">
+      <div class="story-date">2026.09.24</div>
+      <h3>SAP, IDC MarketScape 'AI 기반 직접 지출(Direct Spend)' 2026 부문 리더로 선정</h3>
+      <p>SAP가 시장조사기관 IDC의 'IDC MarketScape: Worldwide AI-Enabled Direct Spend 2026
+      Vendor Assessment'(IDC #US54900426)에서 리더(Leader) 부문에 이름을 올렸다고 발표했다.
+      SAP Ariba의 직접 지출(direct spend) 솔루션은 어떤 ERP 백엔드와도 연동 가능하면서
+      SAP Cloud ERP와는 별도 설정 없이 기본 통합되는 것이 강점으로 꼽혔다. SAP는 복잡한
+      글로벌 공급망을 운영하는 제조기업 입장에서 소싱·엔지니어링·기획·공급업체 협업을 하나의
+      기반 위에 연결하는 네이티브 통합 방식이 수작업 전달 단계를 줄이고 기능 간 가시성을
+      높이며 공급망 교란에 더 빠르게 대응할 수 있게 하고, 개별 점(point) 솔루션이 아닌 연결된
+      비즈니스 데이터를 활용하는 AI를 가능하게 한다고 설명했다. 이번 선정은 SAP가 최근 수년간
+      받아온 조달 관련 시장조사 평가에서의 리더 인정을 잇는 결과다.</p>
+      <div class="source-link"><a href="https://news.sap.com/2026/09/sap-a-leader-2026-idc-marketscape-ai-enabled-direct-spend/" target="_blank">SAP News Center →</a></div>
+    </article>
+
+    <article class="story">
+      <div class="story-date">2026.09.22</div>
+      <h3>아르헨티나 플러스페트롤(Pluspetrol), AI 에이전트로 'SAP Innovation Tournament Americas 2026' 우승</h3>
+      <p>아르헨티나 석유·가스 기업 플러스페트롤이 시추 작업에 필요한 자재 가용성을 사전에
+      예측하는 AI 에이전트를 개발해 'SAP Innovation Tournament Americas 2026 – Agentic
+      Edition' 아르헨티나 대회에서 우승했다. 이 에이전트는 향후 200일 구간을 모니터링하며
+      자재 부족 구간을 탐지하고, 기존 재고·발주된 구매주문·이전 프로젝트 잔여 자재를 바탕으로
+      가용 커버리지를 계산해 최적의 대안을 추천하고 계획된 발주를 실행까지 처리한다. 이를 통해
+      시추 지연과 추가 비용 발생을 막는 것이 목표다. 시상식은 부에노스아이레스 라 루랄(La
+      Rural)에서 열린 'SAP NOW AI Tour Argentina 2026' 행사에서 진행됐다.</p>
+      <div class="source-link"><a href="https://news.sap.com/latinamerica/2026/09/pluspetrol-gana-el-sap-innovation-tournament-americas-2026-en-argentina/" target="_blank">SAP News Center LatAm →</a></div>
+    </article>
+
+    <article class="story">
+      <div class="story-date">2026.09.15</div>
+      <h3>SAP AI Core에 정형 데이터 예측 모델 'TabPFN-3.5 Plus' 추가 — 학습 없이 즉시 예측</h3>
+      <p>SAP가 Prior Labs의 정형 데이터(tabular) 파운데이션 모델 TabPFN-3.5 Plus를 SAP AI Core에
+      통합했다고 발표했다. 별도의 모델 학습이나 튜닝 없이 정형 비즈니스 데이터를 기반으로 대금
+      지연, 공급업체 리스크, 고객 이탈, 추가판매 기회 등을 예측할 수 있으며, 결측값·혼합 데이터
+      유형·자유 텍스트가 섞인 필드도 별도 전처리 없이 처리한다. SAP AI Core를 통해 생성형 AI
+      모델뿐 아니라 정형 데이터 특화 모델까지 표준화된 방식으로 관리·운영할 수 있게 됐다.</p>
+      <div class="source-link"><a href="https://news.sap.com/2026/09/tabpfn-35-plus-now-available-sap-ai-core-instant-business-predictions/" target="_blank">SAP News Center →</a></div>
+    </article>
+
+    <article class="story">
+      <div class="story-date">2026.09</div>
+      <h3>Joule 조달 에이전트 2차 웨이브 GA — SAP Ariba Buying에 6개 어시스턴트 투입</h3>
+      <p>카테고리 관리, 공급업체 관리, 요청서, 구매, 입고, 서비스 조달 어시스턴트 등 6개 Joule
+      에이전트가 9월 일반 공급(GA)에 들어갔다. 6월 1차 웨이브(Ariba Contracts·Intake Management)에
+      이은 두 번째 물결로, 총 11개 Joule 어시스턴트 롤아웃의 일환이다. Joule Agent Runtime은 2026년
+      12월 31일까지 무상 제공되어 기존 Ariba·Fieldglass 고객의 추가 비용 부담이 없다는 점도 눈에 띈다.</p>
+      <div class="source-link"><a href="https://erp.today/sap-joule-agents-ariba-fieldglass-procurement-automation-2026/" target="_blank">ERP Today →</a></div>
+    </article>
+
+    <article class="story">
+      <div class="story-date">2026.09</div>
+      <h3>SAP 최초 'Embodied AI Jam' 개최 — 로봇·휴머노이드를 Joule과 연계</h3>
+      <p>스위스 빌(Biel)의 Swiss Smart Factory에서 SAP 고객, 로봇 제조사, 시스템 통합업체, SAP의
+      임바디드 AI 전문가들이 모여 로봇과 SAP 소프트웨어가 실제 비즈니스 과제를 해결하는 방식을
+      직접 실험하는 첫 'Embodied AI Jam'을 열었다. 로보독, 소형 드론, 피킹·패킹 작업을 수행하는
+      휴머노이드가 등장했으며, 이러한 물리적 AI 에이전트를 Joule 및 SAP Business AI 플랫폼과
+      연결해 비즈니스 맥락을 물리적 실행에 접목한다는 구상이다. 2027년 1월부터는 SAP 스위스
+      법인이 Swiss Smart Factory의 정식 회원사로 참여해 향후 행사를 이어갈 예정이다.</p>
+      <div class="source-link"><a href="https://news.sap.com/2026/09/embodied-ai-jam-customers-robots-ai-viable-use-cases/" target="_blank">SAP News Center →</a></div>
+    </article>
+
+    <article class="story">
+      <div class="story-date">2026.09</div>
+      <h3>'SAP Ariba Spend Analysis and Insights' 정식 출시 — 지출 데이터로 AI 기반 조달 인사이트 제공</h3>
+      <p>SAP가 지출 데이터를 통합해 AI 기반 인사이트를 제공하는 'SAP Ariba Spend Analysis and
+      Insights'의 정식 출시를 발표했다. 조달 조직이 더 빠르게 대응하고 더 확신 있게 비즈니스에
+      조언하며, 경영진이 이해할 수 있는 지표로 성과를 입증할 수 있도록 돕는다는 설명이다. SAP는
+      2026년 이코노미스트(Economist) 엔터프라이즈 리포트에서 조달 조직이 나머지 비즈니스와
+      효과적으로 협업할 수 있다는 신뢰도가 2025년 90%에서 2026년 74%로 하락했다는 조사 결과를
+      배경으로 제시했다. SAP는 오는 9월 24일 해킷그룹(The Hackett Group)의 릭 가드너(Rick
+      Gardner)를 초청해 신뢰할 수 있는 지출 데이터와 AI가 조달 의사결정에 미치는 영향을 다루는
+      웨비나도 개최할 예정이다.</p>
+      <div class="source-link"><a href="https://news.sap.com/2026/09/sap-ariba-spend-analysis-and-insights-now-available/" target="_blank">SAP News Center →</a></div>
+    </article>
+
+    <article class="story">
+      <div class="story-date">2026.09</div>
+      <h3>SAP, 서비스·지원 포트폴리오 성과 공개 — 'Joule for SAP for Me' 사용자 20만 명 육박</h3>
+      <p>SAP가 자사 서비스·지원 포트폴리오의 실제 성과를 정리한 업데이트를 발표했다. 고객
+      지원 채널인 'Joule for SAP for Me'는 연초 이후 사용자가 약 20만 명에 달할 정도로
+      빠르게 확산됐으며, AI 에이전트가 지원 케이스를 자동으로 처리·해결하는 '에이전틱 케이스
+      해결(agentic case resolution)' 기능은 처리 시간을 줄이고 수동 에스컬레이션 필요성을
+      낮추는 데 활용되고 있다. Advanced Success Plan과 Max Success Plan은 수백 개 기업이
+      채택해 심화된 지원 관계가 장기적 성과로 이어지고 있음을 보여준다는 설명이다. 또한 SAP
+      Business Technology Platform(BTP) 관련 개발 지원 서비스도 확대돼, 커스텀 애플리케이션과
+      통합 작업의 품질과 속도를 높이는 구조화된 가이드와 모범사례 프레임워크를 담은 신규
+      익스텐서빌리티 패키지가 제공된다.</p>
+      <div class="source-link"><a href="https://news.sap.com/2026/09/tangible-progress-sap-services-and-support-impact/" target="_blank">SAP News Center →</a></div>
+    </article>
+  </section>
+
+  <footer>
+    본 리포트는 공개된 뉴스를 기반으로 자동 요약되었습니다 · Generated for 바이브리치<br>
+    다음 업데이트: 익일 09:00 KST
+  </footer>
+
+</div>
+
+<script>
+  // 리포트 생성 시각 표시 (KST 기준)
+  const now = new Date();
+  const kstOffset = 9 * 60;
+  const utc = now.getTime() + (now.getTimezoneOffset() * 60000);
+  const kst = new Date(utc + (kstOffset * 60000));
+  const days = ['일','월','화','수','목','금','토'];
+  const dateStr = `${kst.getFullYear()}년 ${kst.getMonth()+1}월 ${kst.getDate()}일 (${days[kst.getDay()]})`;
+  const el = document.getElementById('report-date');
+  if (el) el.textContent = dateStr;
+</script>
+
+</body>
+</html>
