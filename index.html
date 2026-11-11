@@ -168,14 +168,14 @@
   </header>
 
   <div class="meta-bar">
-    <span id="report-date">2026년 11월 10일 (화)</span>
+    <span id="report-date">2026년 11월 11일 (수)</span>
     <span>발행: 바이브리치 · 아이티리치</span>
   </div>
 
   <div class="lede">
-    <strong>오늘의 요약.</strong> 11월 10일(KST) 기준 지난 24~72시간 내 새로 확인된 기사는 없어 기존 기사를 유지했다. 가장 최근 소식은 11월 3일 EU 집행위의 SAP 유지보수 시정 약속(AT.40823) 결정 요약본 공개(MLex)다.
-    ERP 분야는 10월 21일 3분기 실적(현재 클라우드 백로그 241억 유로), 보안 분야는 10월 13일 패치데이(SSRF CVE-2026-89111, CVSS 10.0), AI 분야는 10월 27일 TechEd 발표가 최신이다.
-    11월 SAP 보안 패치데이는 오늘 11월 10일(화)로 예정돼 있으나 상세 분석은 아직 공개되지 않아 SAP 보안 노트 직접 확인이 필요하다.
+    <strong>오늘의 요약.</strong> 11월 10일 SAP 11월 보안 패치데이가 공개됐다. SAP 공지 기준 신규 보안 노트 35건과 GitHub 보안 권고 4건이며, SAP Gateway·Web Dispatcher·NetWeaver에서 최고 등급(CVSS 10.0) 취약점 4건이 패치돼 즉시 적용이 권고된다.
+    AI 분야에서는 베를린에서 열린 SAP TechEd 2026에서 Joule Work 에이전틱 기능, Joule Studio 런타임, 서드파티 에이전트용 에이전트 게이트웨이가 공개됐다.
+    ERP 분야는 10월 21일 3분기 실적(현재 클라우드 백로그 241억 유로), 규제 분야는 11월 3일 EU 집행위의 SAP 유지보수 시정 약속(AT.40823) 결정 요약본 공개가 최신이다.
   </div>
 
   <!-- ERP 코어 / 클라우드 전환 -->
@@ -301,6 +301,23 @@
       <h2>보안 패치 · 취약점</h2>
       <span class="rule"></span>
     </div>
+
+    <article class="story">
+      <div class="story-date">2026.11.10</div>
+      <h3>11월 보안 패치데이 — Gateway·Web Dispatcher·NetWeaver에서 CVSS 10.0 취약점 4건 패치</h3>
+      <p>SAP는 11월 10일 정기 보안 패치데이를 통해 신규 보안 노트 35건과 GitHub 보안 권고 4건을 공개했다. 최고 점수인 CVSS 10.0 취약점 4건이 SAP Gateway, Web Dispatcher,
+      NetWeaver에서 확인됐으며, 인증된 사용자가 필요한 CVSS 9.9 취약점 3건도 포함됐다. 일부 분석에 따르면 17건의 수정이 SAP 커널·독립형 Web Dispatcher에 집중됐다.
+      집계 수치는 출처별로 상이해(보안 노트 38건·HotNews 9건, CVE 40건 등) SAP 지원 포털의 공식 목록 확인과 우선 패치 적용이 권고된다.</p>
+      <div class="source-link"><a href="https://support.sap.com/en/my-support/knowledge-base/security-notes-news/november-2026.html" target="_blank">SAP Support →</a> · <a href="https://gbhackers.com/sap-november-2026-patch-day/" target="_blank">GBHackers →</a></div>
+    </article>
+
+    <article class="story">
+      <div class="story-date">2026.11</div>
+      <h3>패치데이 앞서 SAP BTP의 PHP 관련 긴급 노트 공개 (CVSS 9.8)</h3>
+      <p>11월 패치데이에 앞서 SAP는 SAP BTP 상의 PHP 관련 취약점을 다루는 보안 노트(Note 3846599)를 별도 공개했다. 심각도는 CVSS 9.8이며
+      CVE-2026-109618, CVE-2026-109619로 추적된다. BTP에서 PHP 런타임을 사용하는 고객은 해당 노트를 함께 점검해야 한다.</p>
+      <div class="source-link"><a href="https://redrays.io/blog/sap-security-patch-day-november-2026/" target="_blank">RedRays →</a></div>
+    </article>
 
     <article class="story">
       <div class="story-date">2026.10.13</div>
@@ -429,6 +446,15 @@
       <h2>비즈니스 AI · 에이전트</h2>
       <span class="rule"></span>
     </div>
+
+    <article class="story">
+      <div class="story-date">2026.11</div>
+      <h3>SAP TechEd 2026 베를린 — Joule Work 에이전틱 기능·Joule Studio 런타임·에이전트 게이트웨이 공개</h3>
+      <p>11월 초 베를린에서 열린 SAP TechEd 2026은 SAP·비SAP 시스템 전반의 업무를 수행하는 AI 인터페이스 'Joule Work'에 초점을 맞췄다. Joule Work는 다단계 작업을 계획·실행하는
+      에이전틱 기능을 갖췄고, Joule Studio로 만든 에이전트는 Joule Studio 런타임에 배포돼 SAP AI Agent Hub와 Joule Work 대화에 노출된다. 서드파티 에이전트가 통제된 진입점을 통해
+      Joule 에이전트를 호출할 수 있는 에이전트 게이트웨이 기능도 즉시 제공된다. 엔터프라이즈 AI 게이트웨이·Knowledge Graph 기능은 2027년 1분기 예정이며, 무료 Joule Studio 개발자 인증은 12월 31일까지 제공된다.</p>
+      <div class="source-link"><a href="https://erp.today/sap-teched-2026-whats-rolling-out-and-whats-planned-through-2027/" target="_blank">ERP Today →</a> · <a href="https://www.sap.com/blogs/top-sap-teched-2026-announcements" target="_blank">SAP Blog →</a></div>
+    </article>
 
     <article class="story">
       <div class="story-date">2026.10.27</div>
