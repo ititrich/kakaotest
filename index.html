@@ -168,14 +168,15 @@
   </header>
 
   <div class="meta-bar">
-    <span id="report-date">2026년 11월 14일 (토)</span>
+    <span id="report-date">2026년 11월 15일 (일)</span>
     <span>발행: 바이브리치 · 아이티리치</span>
   </div>
 
   <div class="lede">
-    <strong>오늘의 요약.</strong> ERP 분야에서는 Applexus가 11월 11일 콜한(Cole Haan)의 SAP S/4HANA 글로벌 전환을 3개 권역·18개월 만에 단일 컷오버로 완료했다고 발표했고, SAP는 11월 13일 S/4HANA Cloud·IBP 등 일부 클라우드 서비스에 서버 기반 탄소배출·에너지 사용량 조회 기능을 추가했다. JPMorgan은 "AI가 파일럿에서 실제 운영으로 넘어간다"며 SAP 투자의견을 '비중확대'로 올리고 목표가를 275유로로 상향했다.
-    보안 분야에서는 11월 10일 패치데이의 CVSS 10.0 취약점 4건(SAML2 우회·ICM2SHELL·PROXYGATE 등)이 여전히 최우선 조치 대상이다.
-    AI 분야는 11월 2일 SAP Business AI Platform·Joule Studio·Joule Work 정식 출시(GA)가, 규제 분야는 EU 집행위의 유지보수 시정 약속(AT.40823) 확정이 최신 이슈로 유지되고 있다.
+    <strong>오늘의 요약.</strong> AI 분야에서는 SAP가 캐나다 Cohere의 엔터프라이즈 AI 플랫폼 'Cohere North'를 SAP Business AI Platform에서 정식 출시(GA)했고, 독일 증권 매체는 발표 당일 SAP 주가가 3.8% 올랐다고 전했다. 11월 2일 Business AI Platform·Joule Studio·Joule Work GA에 이어 소버린 AI 수요를 겨냥한 행보다.
+    ERP 분야에서는 SAP가 가트너 클라우드 ERP 매직 쿼드런트에서 제품 중심 기업 부문 5년 연속, 서비스 중심 기업 부문까지 두 부문 리더로 선정됐고, 아스트라제네카의 RISE with SAP 전환과 JPMorgan의 목표가 275유로 상향이 함께 주목받고 있다.
+    보안 분야에서는 11월 10일 패치데이의 CVSS 10.0 취약점 4건에 더해 S4CRM 권한 검사 누락·ABAP OS 명령 주입 등 9.9 등급 취약점도 조치 대상으로 정리됐다. 목요일 보도 기준 실제 악용 징후는 없다.
+    규제 분야는 EU 집행위의 유지보수 시정 약속(AT.40823) 확정이 최신 이슈로 유지되고 있다.
   </div>
 
   <!-- ERP 코어 / 클라우드 전환 -->
@@ -186,6 +187,15 @@
       <span class="rule"></span>
     </div>
 
+    <article class="story">
+      <div class="story-date">2026.11</div>
+      <h3>SAP, 가트너 클라우드 ERP 매직 쿼드런트 두 부문 리더 — 제품 중심 기업 부문 5년 연속</h3>
+      <p>SAP가 가트너의 2026년 클라우드 ERP 매직 쿼드런트에서 제품 중심 기업(product-centric) 부문 리더로 5년 연속 선정됐고, 서비스 중심 기업(service-centric) 부문에서도
+      리더에 올랐다. 같은 주에는 아스트라제네카의 RISE with SAP 기반 SAP Cloud ERP Private 전환 발표, JPMorgan의 '비중확대' 상향(목표가 275유로)도 함께 나왔다.
+      다만 아스트라제네카 건은 아직 계획 단계로, 실제 운영 전환으로 이어지는지가 관건이라는 평가가 나온다. CFO는 11월 19일과 12월 1일 투자자 행사에서 발표할 예정이며,
+      2026년 4분기·연간 잠정 실적은 2027년 1월 28일 공개된다.</p>
+      <div class="source-link"><a href="https://www.ad-hoc-news.de/boerse/news/unternehmensnachrichten/sap-balances-security-cleanup-with-astrazeneca-cloud-win-and-a-doubled-jpmorgan-target/70510746" target="_blank">ad-hoc-news →</a></div>
+    </article>
     <article class="story">
       <div class="story-date">2026.11.13</div>
       <h3>SAP, S/4HANA Cloud·IBP 등 클라우드 서비스에 '서버 기반 탄소배출 조회' 기능 추가</h3>
@@ -358,6 +368,16 @@
     </div>
 
     <article class="story">
+      <div class="story-date">2026.11.14</div>
+      <h3>11월 패치데이 후속 정리 — CVSS 10.0 4건 외 S4CRM·ABAP 등 9.9 등급 취약점도 우선 조치 대상</h3>
+      <p>보안 업계의 후속 분석에 따르면 11월 패치데이는 SAP 노트·CVE 약 42건 규모로, 치명적 취약점 대부분이 NetWeaver/ABAP 스택과 Web Dispatcher·ICM·Gateway에 몰려 있다.
+      CVSS 10.0 4건 외에도 S4CRM 권한 검사 누락(CVE-2026-109795, 9.9 — 저권한 공격자의 원격 코드 실행 가능성), ABAP 애플리케이션 서버 OS 명령 주입(CVE-2026-76965, 9.9),
+      KM XML Forms 코드 인젝션(CVE-2026-109803, 9.9)이 고위험으로 분류됐다. 목요일 보도 기준 실제 악용 징후는 보고되지 않았다.
+      다만 2차 출처 간 CVE·노트 매핑이 일부 다르므로 조치 전 SAP 공식 패치데이 페이지에서 확인할 것이 권고된다.</p>
+      <div class="source-link"><a href="https://www.layersevensecurity.com/sap-security-notes-november-2026/" target="_blank">Layer Seven Security →</a> · <a href="https://www.esecurityplanet.com/news/news-sap-november-2026-patches-maximum-severity-flaws/" target="_blank">eSecurity Planet →</a> · <a href="https://snok.ai/en/news/blog/sap-security-patch-day-november-2026/" target="_blank">snok.ai →</a> · <a href="https://sapinsider.org/articles/sap-security-patch-day-november-2026-shared-infrastructure" target="_blank">SAPinsider →</a></div>
+    </article>
+
+    <article class="story">
       <div class="story-date">2026.11.10</div>
       <h3>11월 보안 패치데이 — ICM2SHELL·PROXYGATE 등 CVSS 10.0 취약점 4건, 치명적 노트 9건</h3>
       <p>SAP는 11월 10일 패치데이에서 신규 보안 노트 35건(치명적 9건, 높음 17건)과 GitHub 보안 권고 4건, 업데이트 3건을 공개했다. CVSS 10.0 취약점 4건은
@@ -504,6 +524,16 @@
       <h2>비즈니스 AI · 에이전트</h2>
       <span class="rule"></span>
     </div>
+
+    <article class="story">
+      <div class="story-date">2026.11</div>
+      <h3>SAP, 'Cohere North' Business AI Platform에 정식 출시 — 규제 산업 겨냥 소버린 AI</h3>
+      <p>SAP가 캐나다 AI 기업 Cohere의 에이전틱 AI 플랫폼 'Cohere North'를 SAP Business AI Platform에서 정식 출시(GA)했다. 주권(sovereignty)과 데이터 레지던시 요건이 있는
+      규제 산업 고객을 겨냥한 제공으로, 2025년 11월 SAP EU AI Cloud 발표 때 처음 예고됐고 2026년 2월 캐나다를 시작으로 한 소버린 AI 협력 확대로 이어졌다.
+      독일 증권 매체 boerse-express는 발표 당일 SAP 주가가 3.8% 올랐다고 전했다. 정확한 출시일은 보도에 '화요일'로만 언급돼 SAP 공식 발표로 확인이 필요하다.
+      한편 TechEd 발표에 따라 AI Governance Assistant는 11월 중 SAP Early Adopter Care 고객에게 제공될 예정이다.</p>
+      <div class="source-link"><a href="https://www.boerse-express.com/news/articles/sap-aktie-cohere-north-ist-freigeschaltet-959318" target="_blank">boerse-express →</a> · <a href="https://trading-treff.de/aktien/sap-aktie-cohere-north-ist-ab-sofort-zu-haben" target="_blank">trading-treff →</a> · <a href="https://sapinsider.org/blogs/sap-teched-2026-new-tools-to-build-and-govern-ai-agents" target="_blank">SAPinsider →</a></div>
+    </article>
 
     <article class="story">
       <div class="story-date">2026.11.02</div>
