@@ -168,14 +168,14 @@
   </header>
 
   <div class="meta-bar">
-    <span id="report-date">2026년 11월 15일 (일)</span>
+    <span id="report-date">2026년 11월 16일 (월)</span>
     <span>발행: 바이브리치 · 아이티리치</span>
   </div>
 
   <div class="lede">
-    <strong>오늘의 요약.</strong> AI 분야에서는 SAP가 캐나다 Cohere의 엔터프라이즈 AI 플랫폼 'Cohere North'를 SAP Business AI Platform에서 정식 출시(GA)했고, 독일 증권 매체는 발표 당일 SAP 주가가 3.8% 올랐다고 전했다. 11월 2일 Business AI Platform·Joule Studio·Joule Work GA에 이어 소버린 AI 수요를 겨냥한 행보다.
-    ERP 분야에서는 SAP가 가트너 클라우드 ERP 매직 쿼드런트에서 제품 중심 기업 부문 5년 연속, 서비스 중심 기업 부문까지 두 부문 리더로 선정됐고, 아스트라제네카의 RISE with SAP 전환과 JPMorgan의 목표가 275유로 상향이 함께 주목받고 있다.
-    보안 분야에서는 11월 10일 패치데이의 CVSS 10.0 취약점 4건에 더해 S4CRM 권한 검사 누락·ABAP OS 명령 주입 등 9.9 등급 취약점도 조치 대상으로 정리됐다. 목요일 보도 기준 실제 악용 징후는 없다.
+    <strong>오늘의 요약.</strong> AI 분야에서는 SAP와 VF Corporation이 11월 11일 발도르프 본사에 AI 테스트 매장 'S.Fashion'을 열었다. 품목 단위 RFID·로보틱스·SAP 애플리케이션을 연결하고 Joule이 입장부터 결제까지 고객을 안내하며, 일부 시간대에는 직원 없이 자율 운영된다. BlackLine도 SAP Business AI Platform 기반 결산(R2R) AI 로드맵을 내놨다.
+    ERP 분야에서는 아스트라제네카의 RISE with SAP 기반 SAP Cloud ERP Private 전환, 가트너 클라우드 ERP 매직 쿼드런트 두 부문 리더 선정, JPMorgan의 '비중확대' 상향(목표가 275유로)이 계속 주목받고 있다.
+    보안 분야에서는 미국 CIS가 11월 패치데이 관련 임의 코드 실행 위험 권고를 냈고, Pathlock은 이번 패치데이 보안 노트를 38건으로 집계했다(출처마다 35~38건). CVSS 10.0 취약점 4건은 우선 조치 대상이다.
     규제 분야는 EU 집행위의 유지보수 시정 약속(AT.40823) 확정이 최신 이슈로 유지되고 있다.
   </div>
 
@@ -368,6 +368,15 @@
     </div>
 
     <article class="story">
+      <div class="story-date">2026.11.10</div>
+      <h3>미국 CIS, SAP 11월 패치데이 관련 권고 발표 — "임의 코드 실행 가능한 다수 취약점"</h3>
+      <p>미국 인터넷보안센터(CIS)가 SAP 제품의 여러 취약점으로 임의 코드 실행이 가능하다는 권고를 냈다. Pathlock은 11월 패치데이에 보안 노트 38건이 공개됐다고 집계했고,
+      주요 항목으로 NetWeaver AS ABAP ICM 메모리 손상(CVE-2026-76964)과 NetWeaver KM XML Forms 코드 인젝션(CVE-2026-109803)을 꼽았다. 대만 iThome은 애플리케이션 취약점 35건과
+      GitHub 공개 라이브러리 약점 4건이 포함됐다고 전했다. 집계 방식에 따라 건수가 달라 SAP 공식 페이지로 확인할 필요가 있다.</p>
+      <div class="source-link"><a href="https://cisecurity.org/advisory/multiple-vulnerabilities-in-sap-products-could-allow-for-arbitrary-code-execution_2026-128" target="_blank">CIS →</a> · <a href="https://pathlock.com/blog/security-alerts/sap-security-patch-day-november-2026-critical-vulnerabilities/" target="_blank">Pathlock →</a> · <a href="https://www.ithome.com.tw/news/180411" target="_blank">iThome →</a></div>
+    </article>
+
+    <article class="story">
       <div class="story-date">2026.11.14</div>
       <h3>11월 패치데이 후속 정리 — CVSS 10.0 4건 외 S4CRM·ABAP 등 9.9 등급 취약점도 우선 조치 대상</h3>
       <p>보안 업계의 후속 분석에 따르면 11월 패치데이는 SAP 노트·CVE 약 42건 규모로, 치명적 취약점 대부분이 NetWeaver/ABAP 스택과 Web Dispatcher·ICM·Gateway에 몰려 있다.
@@ -524,6 +533,23 @@
       <h2>비즈니스 AI · 에이전트</h2>
       <span class="rule"></span>
     </div>
+
+    <article class="story">
+      <div class="story-date">2026.11.11</div>
+      <h3>SAP·VF Corporation, 발도르프 본사에 AI 테스트 매장 'S.Fashion' 개장 — Joule이 쇼핑 안내</h3>
+      <p>SAP와 VF Corporation이 SAP 본사에 리테일 혁신 공간 'S.Fashion'을 열었다. 개장 행사에는 크리스티안 클라인 SAP CEO와 VF의 수제이 쿠마르가 참석했다.
+      매장에서는 품목 단위 RFID 데이터, 로보틱스, SAP 애플리케이션이 재고·주문·가격·프로모션·보충을 하나의 흐름으로 연결하고, SAP Business AI Platform의 Joule이 입장·상품 탐색·매장 내 안내·결제까지 고객을 돕는다.
+      일부 시간대에는 직원 없이 자율 운영되며, 운영 규칙과 예외 처리는 사람이 감독한다. SAP 임직원과 가족에게 개방되고 고객·파트너는 사전 예약으로 방문할 수 있다.</p>
+      <div class="source-link"><a href="https://sapinsider.org/blogs/sap-opens-s-fashion-an-ai-test-store-in-walldorf-with-vf-corporation/" target="_blank">SAPinsider →</a> · <a href="https://finviz.com/news/420912/sap-and-vfc-open-intelligent-fashion-store" target="_blank">Finviz →</a></div>
+    </article>
+
+    <article class="story">
+      <div class="story-date">2026.11.09</div>
+      <h3>BlackLine, SAP 파트너십 기반 AI 로드맵 발표 — 결산(R2R) 영역에서 Business AI Platform 연동</h3>
+      <p>BlackLine이 SAP와의 파트너십에 맞춘 AI 로드맵을 발표하고, 결산(Record-to-Report) 영역의 'AI 기반 표준'을 제공하겠다고 밝혔다. 해당 제품은 SAP Business AI Platform에서 구동될 예정이며,
+      BlackLine의 Verity AI가 Joule과 함께 결산 프로세스에서 동작하는 구조다. 세부 기능별 출시 시점은 공개되지 않았다.</p>
+      <div class="source-link"><a href="https://finviz.com/news/419170/blackline-announces-ai-roadmap-in-alignment-with-sap-partnership-to-deliver-ai-powered-gold-standard-for-record-to-report" target="_blank">Finviz →</a></div>
+    </article>
 
     <article class="story">
       <div class="story-date">2026.11</div>
