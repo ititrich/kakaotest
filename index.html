@@ -168,14 +168,15 @@
   </header>
 
   <div class="meta-bar">
-    <span id="report-date">2026년 11월 24일 (화)</span>
+    <span id="report-date">2026년 11월 25일 (수)</span>
     <span>발행: 바이브리치 · 아이티리치</span>
   </div>
 
   <div class="lede">
-    <strong>오늘의 요약.</strong> 클라우드 전환 계약은 꾸준히 늘고 있지만, AI 제품 출시는 늦어지고 있다. 다케다제약은 RISE with SAP와 SAP Signavio를 활용해 SAP ECC에서 SAP Cloud ERP로 옮기는 대규모 전환에 나섰으며, 3년 안에 가동한다는 목표다.
-    반면 투자 매체들은 n8n 파트너십 기반 AI 제품과 Joule Work·Joule Studio의 출시가 지연되고 있다고 보도했다. 또 SAP가 2027년까지 클라우드 매출총이익률 압박을 예상하고 있다고 전했다. 거버넌스 분야에서는 이사회 멤버 지나 바르지우-브로이어가 1주당 약 185유로에 자사주를 매입했다. CCO 자우어레시그의 퇴임을 앞둔 시점이어서 '반대 신호'로 주목받았다.
-    보안 분야는 11월 패치데이(CVSS 10.0 4건)의 조치 권고가 계속 유효하다. 11월 중순까지 실제 악용 사례는 공개 보고되지 않았다.
+    <strong>오늘의 요약.</strong> SAP 주가는 11월 24일에도 184~185유로 선에서 약세를 보였다. 같은 날 SAP는 17차 자사주 매입 중간 공시에서 11월 16~20일 193만여 주를 사들여 누적 매입량이 1,159만 주를 넘었다고 밝혔다. 전주(약 5만 주)보다 매입 속도가 크게 빨라졌다.
+    AI 분야에서는 CFO 도미니크 아삼이 "AI 생산성 향상으로 채용 둔화나 인력 감소가 있을 수 있다"고 말했으며, 내년부터 AI의 재무 효과를 보여주는 새 지표(KPI)를 도입한다고 다시 밝혔다.
+    보안 분야에서는 11월 패치데이의 PROXYGATE 취약점이 패치만으로는 부족할 수 있다는 분석이 나왔다. 게이트웨이 프록시 설정(gw/acl_mode_proxy)도 함께 점검해야 한다는 것이다. 공개 익스플로잇이나 실제 악용 사례는 아직 확인되지 않았다.
+    규제·거버넌스 분야는 새 소식이 없어 기존 기사를 유지한다.
   </div>
 
   <!-- ERP 코어 / 클라우드 전환 -->
@@ -185,6 +186,15 @@
       <h2>ERP 코어 · 클라우드 전환</h2>
       <span class="rule"></span>
     </div>
+
+    <article class="story">
+      <div class="story-date">2026.11.24</div>
+      <h3>SAP, 17차 자사주 매입 공시 — 11월 16~20일 193만 주 매입, 누적 1,159만 주 돌파 · 24일 주가 184유로대 약세</h3>
+      <p>SAP의 17차 자사주 매입 중간 공시에 따르면, SAP는 11월 16~20일 XETRA에서 1,938,163주를 사들였다. 매입 총액은 거래비용을 빼고 약 3억 7,382만 유로다. 이로써 현재 프로그램의 누적 매입량은 11,590,531주가 됐다.
+      전주(11월 9~13일)에는 약 5만 주만 사들여 매입 속도가 느려진 점이 주목받았는데, 이번 주에 다시 크게 늘었다. 프로그램의 전체 규모와 남은 한도는 보도에서 확인되지 않았다.
+      주가는 11월 24일 XETRA 오전 장에서 0.5% 내린 185.42유로, 정오 무렵 1.2% 내린 184.14유로에 거래됐다. 52주 최고가는 11월 5일의 219.65유로다.</p>
+      <div class="source-link"><a href="https://www.tradingview.com/news/tradingview:b5403b55682c4:0-sap-se-sap-repurchased-1-94m-shares-during-nov-16-20/" target="_blank">TradingView →</a> · <a href="https://www.finanzen.ch/nachrichten/aktien/sap-aktie-kursbewegung-24-11-2026-1031802440" target="_blank">finanzen.ch →</a> · <a href="https://www.finanzen.ch/nachrichten/aktien/sap-aktie-kursbewegung-24-11-2026-1031805314" target="_blank">finanzen.ch →</a> · <a href="https://www.ad-hoc-news.de/boerse/news/unternehmensnachrichten/sap-keeps-buying-back-stock-while-building-the-case-for-its-ai-payoff/70550139" target="_blank">ad-hoc-news →</a></div>
+    </article>
 
     <article class="story">
       <div class="story-date">2026.11.20</div>
@@ -442,6 +452,15 @@
     </div>
 
     <article class="story">
+      <div class="story-date">2026.11 (후속)</div>
+      <h3>PROXYGATE, "패치만으론 부족할 수도" — 게이트웨이 프록시 설정(gw/acl_mode_proxy) 함께 점검 필요 · 공개 익스플로잇은 아직 없어</h3>
+      <p>11월 패치데이의 CVSS 10.0 취약점 ICM2SHELL과 PROXYGATE에 대한 후속 분석이 이어지고 있다. 두 취약점은 Onapsis가 SAP에 제보하고 11월 10일 권고문을 냈다. Onapsis는 SAP에 작동하는 개념증명(PoC) 익스플로잇을 비공개로 제공했지만, 상세한 공격 방법은 공개하지 않기로 했다.
+      분석에 따르면 일부 릴리스에서는 PROXYGATE를 패치만으로 막지 못할 수 있다. 악용 가능 여부가 gw/acl_mode_proxy 같은 게이트웨이 프록시 설정에 달려 있기 때문이다. 따라서 SAP Note 적용과 함께 설정도 점검해야 한다.
+      ICM2SHELL은 인증 없이 &lt;sid&gt;adm 계정 권한으로 명령을 실행할 수 있는 원격 코드 실행 취약점이다. 현재까지 실제 악용이나 제3자의 공개 익스플로잇 코드는 확인되지 않았다. 다만 매체마다 CVE 매핑이 달라, SAP Note 원문으로 확인할 것을 권한다.</p>
+      <div class="source-link"><a href="https://fieldeffect.com/blog/sap-icm2shell-proxygate-saml2" target="_blank">Field Effect →</a> · <a href="https://gbhackers.com/critical-sap-proxygate-and-icm2shell-vulnerabilities/" target="_blank">GBHackers →</a> · <a href="https://nexusvoidai.com/cyber-news/sap-icm2shell-proxygate-cvss-10-november-2026-patch-day" target="_blank">NexusVoid →</a> · <a href="https://dev.to/anoymask/sap-icm2shell-and-proxygate-pre-authentication-rce-via-websocket-memory-corruption-and-internal-5fpf" target="_blank">DEV Community →</a></div>
+    </article>
+
+    <article class="story">
       <div class="story-date">2026.11.16</div>
       <h3>싱가포르 CSA·캐나다 사이버보안센터, SAP 11월 패치 관련 경보 — "우선 적용 권고"</h3>
       <p>싱가포르 사이버보안청(CSA)이 11월 16일 'SAP 제품 다수 취약점' 경보(AL-2026-161)를 냈고, 캐나다 사이버보안센터도 11월 월간 롤업 권고(AV26-1137)를 게시했다.
@@ -653,6 +672,14 @@
       <h2>비즈니스 AI · 에이전트</h2>
       <span class="rule"></span>
     </div>
+
+    <article class="story">
+      <div class="story-date">2026.11</div>
+      <h3>CFO 아삼 "AI 생산성 향상, 채용 둔화·인력 감소로 이어질 수도" — 새해부터 AI 재무 효과 추적할 새 KPI 도입</h3>
+      <p>CFO Dive에 따르면 SAP CFO 도미니크 아삼은 모건스탠리 컨퍼런스에서 "AI 발전이 생산성을 크게 높일 것"이라며, 이로 인해 인력 증가가 느려지거나 직원 수가 줄 수 있다고 말했다.
+      아삼은 또 새해부터 AI의 재무 효과를 추적하는 새 KPI를 도입하겠다고 밝혔다. 앞서 "1월부터 AI 관련 매출 지표를 공개하겠다"고 한 발언과 같은 맥락이다. 새 지표의 구체적인 정의는 아직 공개되지 않았다.</p>
+      <div class="source-link"><a href="https://www.cfodive.com/news/ai-productivity-gains-slow-headcount-sap-cfo-predicts/875530/" target="_blank">CFO Dive →</a> · <a href="https://www.finanztrends.de/news/sap-aktie-finanzchef-asam-will-ki-umsaetze-zeigen/" target="_blank">Finanztrends →</a></div>
+    </article>
 
     <article class="story">
       <div class="story-date">2026.11.23</div>
